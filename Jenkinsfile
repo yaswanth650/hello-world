@@ -27,8 +27,7 @@ stages{
     }
   }
  
-  
-   stage ('MOVING Dockerfile TO ANSIBLE') {
+  stage ('MOVING Dockerfile TO ANSIBLE') {
     steps{
     sshPublisher(publishers: [sshPublisherDesc(configName: 'ANSIBLE', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker image rm -f yaswanth_demo
     cd /home/ansible/opt/docker
