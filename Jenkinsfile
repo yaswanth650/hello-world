@@ -34,8 +34,8 @@ stages{
     cd /home/ansible/opt/docker
      docker build -t yaswanth_demo .
      ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansible//opt//docker', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-   }
-}
+      }
+    }
  
    stage ('MOVING Dockerfile TO ANSIBLE') {
      steps{
