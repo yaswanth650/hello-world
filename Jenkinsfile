@@ -33,7 +33,6 @@ stages{
     sshPublisher(publishers: [sshPublisherDesc(configName: 'ANSIBLE', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker image rm -f yaswanth_demo
     cd /home/ansible/opt/docker
      docker build -t yaswanth_demo .
-     docker rm -f yaswanth_demo 
      cd /home/ansible /prod /playbook ansible-playbook -i /home/ansible/prod/playbook/hosts create_docker_container.yml
      ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansible//opt//docker', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
    }
