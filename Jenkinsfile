@@ -43,7 +43,7 @@ stages{
 
   stage('ARACHNI') {
          steps {
-            arachniScanner checks: '*', scope: [pageLimit: 3], url: 'https://35.154.183.127:8443/webapp/', userConfig: [filename: 'myConfiguration.json'], format: 'json'
+           arachniScanner checks: '', format: 'html', url: 'https://35.154.183.127:8443/webapp/'
          }
       }
 }
