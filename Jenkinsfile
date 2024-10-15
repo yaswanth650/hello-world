@@ -3,6 +3,9 @@ pipeline{
   tools{
     maven 'Maven'
   }
+ environment {
+         SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
+    }
   
 stages{
     stage('Initialize'){
@@ -14,19 +17,20 @@ stages{
             '''
       }
     }
+      stage('Semgrep-Scan') {
+          steps {
+            sh '''docker pull semgrep/semgrep && \
+            docker run \
+            -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
+            -v "$(pwd):$(pwd)" --workdir $(pwd) \
+            semgrep/semgrep semgrep ci '''
+      }
+    }
     
-   stage ('Build') {
+ stage ('Build') {
       steps {
       sh 'mvn clean package'
       }
    }
-
- stage ('Deploy-To-Tomcat') {
-            steps {
-           sshagent(['tomcat']) {
-                sh 'scp -o StrictHostKeyChecking=no /var/lib/jenkins/workspace/HELLOWORLD/webapp/target/webapp.war ubuntu@13.233.7.254:/prod/apache-tomcat-10.1.30/webapps/webapp.war'
-              }      
-           }       
-    }
 }
 }
