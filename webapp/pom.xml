@@ -23,10 +23,11 @@
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
       </plugin>
-    <plugins>
+    <plugin>
     <artifactId>maven-war-plugin</artifactId>
         <version>3.3.0</version>
-      </plugin>
+      </plugin>  
+    </plugins>                
   </build>
 
   <dependencies>
