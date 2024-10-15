@@ -24,6 +24,9 @@
         <artifactId>jetty-maven-plugin</artifactId>
       </plugin>
     </plugins>
+    <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.0</version>
+      </plugin>
   </build>
 
   <dependencies>
