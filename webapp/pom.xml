@@ -10,10 +10,10 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <artifactId>28cc9c71-a9de-4ac7-8c3d-de369909854f.txt</artifactId>
+  <artifactId>webapp</artifactId>
   <packaging>war</packaging>
-  <name>28cc9c71-a9de-4ac7-8c3d-de369909854f.txt</name>
-  <description>28cc9c71-a9de-4ac7-8c3d-de369909854f.txt.</description>
+  <name>webapp</name>
+  <description>webapp.</description>
 
   <build>
     <finalName>${project.artifactId}</finalName>
