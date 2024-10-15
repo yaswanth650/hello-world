@@ -23,7 +23,7 @@
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
       </plugin>
-    </plugins>
+    <plugins>
     <artifactId>maven-war-plugin</artifactId>
         <version>3.3.0</version>
       </plugin>
