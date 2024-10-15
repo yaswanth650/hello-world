@@ -23,7 +23,7 @@ stages{
             docker run \
             -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
             -v "$(pwd):$(pwd)" --workdir $(pwd) \
-            semgrep/semgrep semgrep ci '''
+            semgrep/semgrep semgrep ci  security-audit secrets'''
       }
     }
     
