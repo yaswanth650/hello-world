@@ -4,7 +4,7 @@
   "scope": {
     "include_subdomains": true,
     "exclude_content_patterns": ["logout", "signout"]
-     "page_limit": ["100"]
+     "page_limit": 100
   },
   "audit": {
     "forms": true,
