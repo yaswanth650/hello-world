@@ -6,7 +6,7 @@
     "exclude_content_patterns": ["logout", "signout"]
    },
   "audit": {
-    "formsimit": 100": true,
+    "forms": true,
     "cookies": true,
     "headers": true
   },
