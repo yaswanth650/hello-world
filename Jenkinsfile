@@ -39,6 +39,11 @@ stages{
                 sh 'scp -o StrictHostKeyChecking=no **/target/*.war ubuntu@13.200.251.142:/prod/apache-tomcat-10.1.30/webapps/Webapp.war'
               }      
            }       
-       } 
-   }
+       }
+stage('ARACHNI') {
+         steps {
+           arachniScanner checks: '*',scope: [pageLimit: 3],format: 'html', url: 'https://13.200.251.142:8443/Webapp/', userConfig:[filename: 'Configuration.json']
+         }
+      }
+  }
 }
