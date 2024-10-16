@@ -4,12 +4,11 @@
   "scope": {
     "include_subdomains": true,
     "exclude_content_patterns": ["logout", "signout"]
-    [pageLimit: 3]
+     "page_limit": ["100"]
   },
   "audit": {
     "forms": true,
     "cookies": true,
     "headers": true
   },
-  }
 }
