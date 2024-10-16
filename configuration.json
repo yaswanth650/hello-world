@@ -1,9 +1,5 @@
 {
-    "url": "http://65.2.152.116:9292",
-    "authentication": {
-    "username": "yaswanth61998@gmail.com",
-    "password": "admin123456"
-  },
+    "url": "https://52.66.132.132:8443/Webapp/",
     "checks": [
         "*",
         "xss",
