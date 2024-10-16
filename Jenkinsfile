@@ -42,7 +42,7 @@ stages{
        }
 stage('ARACHNI') {
          steps {
-           arachniScanner checks: '*',scope: [pageLimit: 3],format: 'html', url: 'https://13.200.251.142:8443/Webapp/', userConfig:[filename: 'Configuration.json']
+           arachniScanner checks: '*',scope: [pageLimit: 3],format: 'html', url: 'https://13.200.251.142:8443/Webapp/', userConfig:[filename: '/var/lib/jenkins/workspace/HELLOWORLD/Configuration.json']
          }
       }
   }
