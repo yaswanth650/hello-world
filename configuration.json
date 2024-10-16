@@ -1,4 +1,9 @@
 {
+    "url": "http://65.2.152.116:9292/",
+    "authentication": {
+    "username": "yaswanth61998@gmai.com",
+    "password": "admin123456"
+  },
     "checks": [
         "*",
         "xss",
