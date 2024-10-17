@@ -1,9 +1,9 @@
 {
-    "url": "http://52.66.132.132/Webapp/",
+    "url": "http://3.111.149.119:9292/",
     "http": {
     "authentication": {
-      "username": "tomcat",
-      "password": "tomcat"
+      "username": "ravuriyaswanth6@gmail.om",
+      "password": "admin123456"
     }
   },
   "checks": [
