@@ -42,7 +42,7 @@ stages{
        }
 stage('ARACHNI') {
          steps {
-           sh 'arachni --config /var/lib/jenkins/HELLOWORLD/configuration.json'
+           sh 'arachni --config /var/lib/jenkins/HELLOWORLD/configuration.json  https://13.127.237.202:8443/Webapp/'
          }
       }
   }
