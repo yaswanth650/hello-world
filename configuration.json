@@ -1,9 +1,13 @@
 {
-    "url": "http://3.111.149.119:9292/",
-    "http": {
+"url": "http://13.127.237.202/Webapp/",
+  "http": {
+    "user_agent": "Arachni",
+    "request_timeout": 5000,
+    "request_redirect_limit": 5,
+    "request_queue_size": 10,
     "authentication": {
-      "username": "ravuriyaswanth6@gmail.om",
-      "password": "admin123456"
+      "username": "tomcat",
+      "password": "tomcat"
     }
   },
   "checks": [
