@@ -26,7 +26,7 @@ pipeline{
   }
 stage ('MOVING Dockerfile TO ANSIBLE') {
     steps{
-    sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker image rm -f yaswanth_demo
+    sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''
     cd /home/ansadmin/playbook
      docker build -t yaswanth650/$JOB_NAME:v1.$BUILD_ID . 
      docker build -t yaswanth650/$JOB_NAME:latest .
