@@ -38,10 +38,15 @@ stage ('BUILD IMAGE IN  ANSIBLE') {
   }
 stage ('PUSH TO DOCKERHUB') {
     steps{
-      sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker push  yaswanth650/yaswanth-demo
+      sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker push yaswanth650/yaswanth-demo
        docker rmi  yaswanth-demo yaswanth650/yaswanth-demo''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
     }
    }
-
-  }
+stage ('RON DOCKER CONTAINER') {
+    steps{
+    sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ansible-playbook  /home/andadmin/playbook/createdockercontainer.yml
+    ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+     }
+   }
+ }
 }
