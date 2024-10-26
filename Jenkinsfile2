@@ -15,7 +15,12 @@ pipeline{
             '''
           }
       }
-    stage ('Build') {
+ stage('Print Environment Variables') {
+    steps {
+        sh 'printenv'
+       }
+  } 
+   stage ('Build') {
       steps {
       sh 'mvn clean package'
       }
