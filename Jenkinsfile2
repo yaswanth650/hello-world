@@ -57,4 +57,10 @@ stage ('RUN DOCKER CONTAINER') {
      }
    }
  }
+post {
+        failure {
+            echo 'Build failed. Check the logs for more details.'
+            sh 'docker logs'
+        }
+    }
 }
