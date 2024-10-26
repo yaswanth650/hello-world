@@ -35,7 +35,7 @@ stage ('BUILD IMAGE IN  ANSIBLE') {
        sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd /home/ansadmin/playbook
        docker build -t ${JOB_NAME}:v1.${BUILD_NUMBER} .
        docker tag ${JOB_NAME}:v1.${BUILD_NUMBER} yaswanth650/${JOB_NAME}:v1.${BUILD_NUMBER}
-       docker tag ${JOB_NAME}:v1.${BUILD_NUMBRER} yaswanth650/${JOB_NAME}:latest ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansadmin//playbook', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+       docker tag ${JOB_NAME}:v1.${BUILD_NUMBER} yaswanth650/${JOB_NAME}:latest ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansadmin//playbook', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
       }
   }
 stage ('PUSH TO DOCKERHUB') {
