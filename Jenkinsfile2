@@ -15,11 +15,6 @@ pipeline{
             '''
           }
       }
- stage('Print Environment Variables') {
-    steps {
-        sh 'printenv'
-       }
-  } 
    stage ('Build') {
       steps {
       sh 'mvn clean package'
@@ -58,7 +53,7 @@ stage ('RUN DOCKER CONTAINER') {
    }
  }
 post {
-        failure {
+        unstable {
             echo 'Build failed. Check the logs for more details.'
             sh 'docker logs'
         }
