@@ -10,9 +10,9 @@ pipeline{
   stages{
     stage('Initialize'){
       steps{
-        sh '''       echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-            '''
+        sh '''      echo "Job Name: ${JOB_NAME}"
+                    echo "Build Number: ${BUILD_NUMBER}"
+           '''
           }
       }
    stage ('Build') {
