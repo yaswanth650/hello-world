@@ -3,9 +3,6 @@ pipeline{
   tools{
     maven 'Maven'
   }
-environment {
-        IMAGE_NAME = "${JOB_NAME}:v${BUILD_NUMBER}"
-    }
   stages{
     stage('Initialize'){
       steps{
@@ -31,7 +28,8 @@ environment {
 }
  stage ('BUILD DOCKER IMAGE') {
     steps{
-   sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: ''' cd /home/ansadmin/playbook ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+   sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: ''' cd /home/ansadmin/playbook 
+   docker build -t ${Job_Name}:v1.${Build_Number} .''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
     }
   }
 }
