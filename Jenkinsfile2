@@ -9,8 +9,8 @@ environment {
   stages{
     stage('Initialize'){
       steps{
-        sh '''      echo "Job_Name: ${JOB_NAME}"
-                    echo "Build_Number: ${BUILD_NUMBER}"
+        sh '''      echo "Job_Name= ${JOB_NAME}"
+                    echo "Build_Number= ${BUILD_NUMBER}"
            '''
           }
       }
