@@ -3,9 +3,6 @@ pipeline{
   tools{
     maven 'Maven'
   }
- environment {
-	IMAGE_NAME = "${JOB_NAME}:v1.${BUILD_NUMBER}"
-    }
   stages{
     stage('Initialize'){
       steps{
