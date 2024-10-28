@@ -16,7 +16,7 @@ pipeline{
     }
    stage ('BUILD DOCKER IMAGE') {
     steps{
-        sh 'cd /var/lib/jenkins/workspace/dockerimagebuildandpush/webapp/target docker buit -t webapp .
+        sh 'cd /var/lib/jenkins/workspace/dockerimagebuildandpush/webapp/target docker buit -t webapp .'
         sh 'docker tag yaswanth650/webapp:latest'
        }
     }
