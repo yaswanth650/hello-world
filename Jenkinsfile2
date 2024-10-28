@@ -4,6 +4,13 @@ pipeline{
     maven 'Maven'
   }
   stages{
+    stage('Initialize'){
+      steps{
+        sh '''    echo "PATH = ${PATH}"
+                  echo "M2_HOME = ${M2_HOME}"
+            '''
+          }
+      }
    stage ('Build') {
       steps {
       sh 'mvn clean package'
@@ -14,17 +21,31 @@ pipeline{
       sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansadmin//playbook', remoteDirectorySDF: false, removePrefix: '/webapp/target', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
     }
   }
-stage ('MOVING DOCKERFILE TO ANSIBLE') {
+ stage ('MOVING DOCKERFILE TO ANSIBLE') {
     steps{
      sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansadmin//playbook', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'Dockerfile')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)]) 
   }
 }
-stage ('BUILD DOCKER IMAGE') {
+stage ('BUILD IMAGE IN  ANSIBLE') {
     steps{
-   sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd /home/ansadmin/playbook
-   docker build -t $JOB_NAME:v1.$BUILD_ID .''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd /home/ansadmin/playbook
+       docker build -t ${JOB_NAME}:v1.${BUILD_NUMBER} .
+       docker tag ${JOB_NAME}:v1.${BUILD_NUMBER} yaswanth650/${JOB_NAME}:v1.${BUILD_NUMBER}
+       docker tag ${JOB_NAME}:v1.${BUILD_NUMBER} yaswanth650/${JOB_NAME}:latest ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//home//ansadmin//playbook', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+      }
+  }
+stage ('PUSH TO DOCKERHUB') {
+    steps{
+      sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand:   '''docker push yaswanth650/${JOB_NAME}:v1.${BUILD_NUMBER}         
+      docker push yaswanth650/${JOB_NAME}:latest
+     docker rmi  ${JOB_NAME}:v1.${BUILD_NUMBER}  yaswanth650/${JOB_NAME}:v1.${BUILD_NUMBER} yaswanth650/${JOB_NAME}:latest ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+    }
+   }
+stage ('RUN DOCKER CONTAINER') {
+    steps{
+    sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible-server', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''ansible-playbook  /home/ansadmin/playbook/createdockercontainerversion.yml
+    ''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+     }
+   }
  }
 }
-}
-}
-
