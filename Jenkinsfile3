@@ -1,0 +1,36 @@
+pipeline{
+ agent any
+  tools{
+    maven 'Maven'
+  }
+  environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+      }
+  stages{
+    stage('Initialize'){
+      steps{
+        sh '''    echo "PATH = ${PATH}"
+                  echo "M2_HOME = ${M2_HOME}"
+            '''
+      }
+    }
+    stage ('Build') {
+      steps {
+      sh 'mvn clean package'
+      }
+    }
+ 
+  stage ('BUILD DOCKER IMAGE') {
+    steps{
+       sh 'docker build -t webapp .' 
+       sh 'docker tag yaswanth650/webapp:latest'
+    }
+    }
+    stage('Login and push') {
+	     steps{
+	        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+          sh 'docker push yaswanth650/webapp:latest'
+       }
+    }
+  }
+}
