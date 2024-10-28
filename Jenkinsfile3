@@ -20,12 +20,19 @@ pipeline{
         sh 'docker tag webapp yaswanth650/webapp:latest'
        }
     }
-    stage('Login and push') {
+    stage('PUSH TO DOCKERHUB') {
 	     steps{
 	        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push yaswanth650/webapp:latest'
                 sh  'docker rmi  webapp yaswanth650/webapp:latest'
        }
     }
-  }
+   stage('RUN CONTAINER') {
+	     steps{
+               sh  'docker stop yaswanth-demo || true'
+               sh  'docker rm -f  yaswanth-demo || true'
+                sh ' docker run -d --name yaswanth-demo -p 8090:8080 yaswanth650/webapp:latest'
+            }
+        }
+    }
 }
