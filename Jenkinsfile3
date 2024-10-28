@@ -16,7 +16,7 @@ pipeline{
     }
    stage ('BUILD DOCKER IMAGE') {
     steps{
-        sh 'docker buit -t webapp .'
+        sh 'docker build -t webapp .'
         sh 'docker tag webapp yaswanth650/webapp:latest'
        }
     }
