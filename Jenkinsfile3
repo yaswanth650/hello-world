@@ -19,5 +19,18 @@ pipeline{
       sh 'mvn clean package'
       }
     }
+   stage ('BUILD DOCKER IMAGE') {
+    steps{
+        sh 'cd /var/lib/jenkins/workspace/dockerimagebuildandpush/webapp/target'
+        sh 'docker build -t webapp .' 
+        sh 'docker tag yaswanth650/webapp:latest'
+       }
+    }
+    stage('Login and push') {
+	     steps{
+	        sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push yaswanth650/webapp:latest'
+       }
+    }
   }
 }
