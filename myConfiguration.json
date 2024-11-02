@@ -7,47 +7,11 @@
     ],
     "scope": {
         "include_subdomains": true,
-        "redundant_path_patterns": [
-            "index.php"
-        ],
-        "dom_depth_limit": 5,
-        "exclude_path_patterns": [
-            "/admin",
-            "/private"
-        ],
-        "include_path_patterns": [
-            "/public",
-            "/user"
-        ],
-        "restrict_paths": [
-            "/restricted"
-        ],
-        "extend_paths": [
-            "/extra"
-        ],
-        "url_rewrites": {
-            "pattern": "replacement"
-        },
-        "old-path": "new-path"
     },
     "audit": {
         "links": true,
         "forms": true,
         "cookies": true,
-        "headers": true,
-        "jsons": true,
-        "xmls": true,
-        "ui_inputs": true,
-        "ui_forms": true,
-        "parameter_names": true,
-        "with_extra_parameter": true,
-        "with_both_methods": true,
-        "exclude_vector": [
-            "logout"
-        ],
-        "include_vector": [
-            "login"
-        ]
     },
     "report": {
         "save_path": "/var/lib/jenkins/workspace/HELLOWORLD",
