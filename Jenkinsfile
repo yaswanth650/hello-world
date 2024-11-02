@@ -25,7 +25,7 @@ pipeline{
        }
 stage('ARACHNI') {
          steps {
-          arachniScanner checks: '*', scope: [pageLimit: 3], url: 'https://13.232.44.90:8443/Webapp', userConfig: [filename: '/var/lib/jenkins/workspace/HELLOWORLD/myconfiguration.json'], format: 'json'
+          arachniScanner checks: '*', scope: [pageLimit: 3], url: 'https://13.232.44.90:8443/Webapp', format: 'json'
          }
       }
    }
