@@ -28,8 +28,7 @@
       ],
       "url_rewrites": {
          "pattern": "replacement"
-       },
-    "old-path": "new-path" 
+       } 
     },
     "audit": {
         "links": true,
