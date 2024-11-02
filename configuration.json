@@ -1,15 +1,5 @@
 {
-"url": "http://3.111.149.119:9292/",
-  "http": {
-    "user_agent": "Arachni",
-    "request_timeout": 5000,
-    "request_redirect_limit": 5,
-    "request_queue_size": 10,
-    "authentication": {
-      "username": "ravuriyaswanth6@gmail.com",
-      "password": "admin123456"
-    }
-  },
+"url": "https://13.232.44.90:8443/WebApp/",
   "checks": [
         "*",
         "xss",
@@ -64,7 +54,7 @@
         ]
     },
     "report": {
-        "save_path": "/var/lib/jenkins/HELLOWORLD",
+        "save_path": "/var/lib/jenkins/workspace/HELLOWORLD",
         "formats": [
             "html",
             "json"
