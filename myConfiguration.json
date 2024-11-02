@@ -12,12 +12,5 @@
         "links": true,
         "forms": true,
         "cookies": true
-    },
-    "report": {
-        "save_path": "/var/lib/jenkins/workspace/HELLOWORLD",
-        "formats": [
-            "html",
-            "json"
-        ]
     }
-}
+    }
