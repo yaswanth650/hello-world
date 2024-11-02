@@ -7,10 +7,6 @@
     ],
     "scope": {
         "include_subdomains": true,
-        "exclude_patterns": [
-            "logout",
-            "signout"
-        ],
         "redundant_path_patterns": [
             "index.php"
         ],
