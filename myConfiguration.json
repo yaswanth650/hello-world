@@ -6,12 +6,12 @@
         "-csrf"
     ],
     "scope": {
-        "include_subdomains": true,
+        "include_subdomains": true
     },
     "audit": {
         "links": true,
         "forms": true,
-        "cookies": true,
+        "cookies": true
     },
     "report": {
         "save_path": "/var/lib/jenkins/workspace/HELLOWORLD",
