@@ -29,7 +29,6 @@
         "ui_forms": true,
         "parameter_names": true,
         "with_extra_parameter": true,
-        "with_both_methods": true,
         "exclude_vector": [
            "logout"
         ],
