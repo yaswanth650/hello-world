@@ -29,10 +29,10 @@
         "ui_forms": true,
         "parameter_names": true,
         "with_extra_parameter": true,
-        "exclude_vector": [
+        "exclude_vector_patterns": [
            "logout"
         ],
-       "include_vector": [
+       "include_vector_patterns": [
            "login"
         ]
     }
