@@ -5,32 +5,20 @@
         "xss",
         "-csrf"
     ],
-    "scope": {
-       "include_subdomains": true,
-       "page_limit" : 3,
-       "redundant_path_patterns": [
-         "index.php"
-       ],
-       "dom_depth_limit": 5,
-       "exclude_path_patterns": [
-         "/admin",
-         "/private"
-       ],
-      "include_path_patterns": [
-        "/public",
-         "/user"
-      ],
-     "restrict_paths": [
-       "/restricted"
-      ],
-      "extend_paths": [
-        "/extra"
-      ],
-      "url_rewrites": {
-         "pattern": "replacement"
-       } 
+    "scope" : {
+      "redundant_path_patterns" : {},
+      "dom_depth_limit" : 5,
+      "exclude_file_extensions" : [],
+      "exclude_path_patterns" : [],
+      "exclude_content_patterns" : [],
+      "include_path_patterns" : [],
+      "restrict_paths" : [],
+      "extend_paths" : [],
+      "url_rewrites" : {},
+      "page_limit" : 3,
+      "include_subdomains" : true
     },
-    "audit": {
+   "audit": {
         "links": true,
         "forms": true,
         "cookies": true,
