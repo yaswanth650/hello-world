@@ -17,6 +17,7 @@ pipeline{
    stage ('Build') {
       steps {
       sh 'mvn clean package'
+      sh 'cp /var/lib/jenkins/workspace/dockerimagebuildandpush/webapp/target/webapp.war /var/lib/jenkins/workspace/dockerimagebuildandpush'
       }
    }
    stage ('BUILD DOCKER IMAGE') {
