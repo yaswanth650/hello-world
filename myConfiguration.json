@@ -1,5 +1,5 @@
 {
-"url": "https://13.232.44.90:8443/WebApp/",
+"url": "https://65.0.204.162:8443/WebApp/",
   "checks": [
         "*",
         "xss",
